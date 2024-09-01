@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="url"] {
+            width: 80%;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #997516;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e91a1a;
+        }
+
+        .device-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 80px;
+        }
+
+        .device-frame {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            overflow: hidden;
+          border-radius: 8px;
+            background-color: #fff;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .desktop {
+            width: 1920px;
+            height: 1080px;
+        }
+
+        .laptop {
+            width: 1366px;
+            height: 768px;
+        }
+
+        .tablet {
+            width: 768px;
+            height: 1024px;
+        }
+
+        .mobile {
+            width: 375px;
+            height: 667px;
+        }
+
+        @media (max-width: 1920px) {
+            .desktop {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .laptop {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tablet, .mobile {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responsive Website Tester</h1>
+
+    <input type="url" id="websiteUrl" placeholder="Enter website URL here" required>
+    <button onclick="loadWebsite()">Responsive Preview</button>
+
+    <div class="device-container">
+        <div class="device-frame desktop">
+            <h3>Desktop (1920x1080)</h3>
+            <iframe id="desktopFrame"></iframe>
+        </div>
+        <div class="device-frame laptop">
+            <h3>Laptop (1366x768)</h3>
+            <iframe id="laptopFrame"></iframe>
+        </div>
+        <div class="device-frame tablet">
+            <h3>Tablet (768x1024)</h3>
+            <iframe id="tabletFrame"></iframe>
+        </div>
+        <div class="device-frame mobile">
+            <h3>Mobile (375x667)</h3>
+            <iframe id="mobileFrame"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function loadWebsite() {
+            const url = document.getElementById('websiteUrl').value;
+            if (url) {
+                document.getElementById('desktopFrame').src = url;
+                document.getElementById('laptopFrame').src = url;
+                document.getElementById('tabletFrame').src = url;
+                document.getElementById('mobileFrame').src = url;
+            } else {
+                alert('Please enter a valid URL.');
+            }
+        }
+    </script>
+
+</body>
+</html>
